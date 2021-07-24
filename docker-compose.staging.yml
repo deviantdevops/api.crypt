@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   api_crypt:
-    image: "registry.iron-labs.de:5000/api/crypt:3.0.0"
+    image: "deviant.code:5000/api/crypt:1.1.0"
     user: "node"
     working_dir: /home/node/app
     restart: on-failure
@@ -13,14 +13,8 @@ services:
       - 7001:7001
     networks:
       - backend
-      - redis
-      - mongo
     command: "npm run staging"
 
 networks:
   backend:
-    external: true
-  redis:
-    external: true
-  mongo:
     external: true

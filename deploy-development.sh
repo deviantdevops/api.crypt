@@ -1,6 +1,6 @@
 #!/bin/bash
 
 #npm run build
-docker build -f app.dockerfile -t darkcodz.com:5000/api/crypt:3.0.0 .
-docker push darkcodz.com:5000/api/crypt:3.0.0
+docker build -f app.dockerfile -t deviant.code:5000/api/crypt:1.1.0 .
+docker push deviant.code:5000/api/crypt:1.1.0
 
