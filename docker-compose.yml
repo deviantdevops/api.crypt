@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+  auth_passport:
+    image: "darkcodz.com:5000/api/auth:3.0.0"
+    user: "node"
+    working_dir: /home/node/app
+    restart: on-failure
+    volumes:
+      - ./:/home/node/app
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: frontend
+      traefik.http.routers.auth_passport.entrypoints: web, websecure
+      traefik.http.routers.auth_passport.tls: "true"
+      traefik.http.routers.auth_passport.rule: Host(`auth.localhost`)
+      traefik.http.services.auth_passport.loadbalancer.server.port: 9059
+      traefik.http.routers.auth_passport.tls.certresolver: le
+      traefik.http.routers.auth_passport.tls.domains[0].main: "auth.localhost"
+      ## Middleware redirect
+      traefik.http.middlewares.https_redirect.redirectscheme.scheme: https
+      traefik.http.middlewares.https_redirect.redirectscheme.permanent: "true"
+    ports:
+      - 9059:9059
+    networks:
+      - frontend
+      - redis
+      - mongo
+      - key
+    command: "npm run dev"
+
+networks:
+  frontend:
+    external: true
+  redis:
+    external: true
+  mongo:
+    external: true
+  key:
+    external: true

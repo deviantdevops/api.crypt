@@ -1,0 +1,58 @@
+{
+  "name": "@deviantcode/api.crypt",
+  "version": "1.1.0",
+  "description": "Crypto signing key generator used for authentication to the system",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon ./index.js",
+    "prod": "cross-env NODE_ENV=production node ./index.js",
+    "staging": "cross-env NODE_ENV=staging node ./index.js",
+    "genkeys": "cross-env NODE_ENV=development node ./genkeys.js"
+  },
+  "keywords": [
+    "key",
+    "authentication",
+    "encryption", 
+    "micro service",
+    "JWT",
+    "json web token"
+  ],
+  "author": "@DevOps | https://deviant.code",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.0.0",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "fs": "0.0.1-security",
+    "http-errors": "~1.6.3",
+    "js-base64": "^3.6.0",
+    "jsencrypt": "^3.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.3.0",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.10.11",
+    "morgan": "~1.9.1",
+    "randomstring": "^1.1.5",
+    "redis": "^3.0.2",
+    "sha-256-js": "^1.0.3",
+    "sha1": "^1.1.1",
+    "tweetnacl": "^1.0.3",
+    "tweetnacl-util": "^0.15.1",
+    "twig": "~0.10.3",
+    "uniqid": "^5.2.0",
+    "utf8": "^3.0.0",
+    "uuid": "^8.3.1",
+    "validate.js": "^0.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

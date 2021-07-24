@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+  auth_passport:
+    image: "darkcodz.com:5000/api/auth:3.0.0"
+    user: "node"
+    working_dir: /home/node/app
+    restart: always
+    deploy:
+      labels:
+        traefik.enable: "true"
+        traefik.docker.network: frontend
+        traefik.http.routers.auth_passport.entrypoints: web, websecure
+        traefik.http.routers.auth_passport.tls: "true"
+        traefik.http.routers.auth_passport.rule: Host(`passport.darkcodz.com`)
+        traefik.http.services.auth_passport.loadbalancer.server.port: 9059
+        traefik.http.routers.auth_passport.tls.certresolver: le
+        traefik.http.routers.auth_passport.tls.domains[0].main: "passport.darkcodz.com"
+
+        ## Middleware redirect
+        traefik.http.middlewares.https_redirect.redirectscheme.scheme: https
+        traefik.http.middlewares.https_redirect.redirectscheme.permanent: "true"
+
+    networks:
+      - frontend
+      - redis
+      - mongo
+      - key
+    command: "npm run dark"
+
+networks:
+  frontend:
+    external: true
+  redis:
+    external: true
+  mongo:
+    external: true
+  key:
+    external: true

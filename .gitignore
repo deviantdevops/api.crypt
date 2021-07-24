@@ -1,0 +1,8 @@
+
+node_modules
+public-key.pem
+private-key.pem
+symetric-key.txt
+yarn.lock
+package-lock.json
+hashmaker.js
